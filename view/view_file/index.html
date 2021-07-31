@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    
+    
+    <!-- Bootstrap core CSS -->
+    <!-- CSS only -->
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue.min.js"
+      integrity="sha512-Z0dNfC81uEXC2iTTXtE0rM18I3ATkwn1m8Lxe0onw/uPEEkCmVZd+H8GTeYGkAZv50yvoSR5N3hoy/Do2hNSkw=="
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue-icons.common.js"
+      integrity="sha512-1JotZA+Yp2KTsv3oZUMaoStKXHJbfOoOCFIVw6NjNIhbLXRYgPfHlnfCZELZSa7Pl2gERROUiVjn6goWxnh5vA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue-icons.common.min.js"
+      integrity="sha512-+e+Co6xInJyWHIqLkhtaBPxFk+RU1bt/ajG/x5l7UuPiPH9n9gwxmfAtTSkX30JM2dZMoM1KXKjNucsrQrS7cQ=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue-icons.css"
+      integrity="sha512-ofvNcyNADx27Xw9edhhecFoL1M+QamynjUyIDVrkLYemVgvWpT5jMA4box8FFaH+umvQyGEDAHyv1CGpmP8NGw=="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-vue/2.21.2/bootstrap-vue.min.css"
+      integrity="sha512-YnP4Ql71idaMB+/ZG38+1adSSQotdqvixQ+dQg8x/IFA4heIj6i0BC31W5T5QUdK1Uuwa01YdqdcT42q+RldAg=="
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <style>
+          .show_firstpage {
+            display: block;
+          }
+
+          .none_firstpage {
+            display: none;
+          }
+
+          .show_secondpage {
+            display: block;
+          }
+
+          .none_secondpage {
+            display: none;
+          }
+    </style>
+    <title>Movie Box</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            
+                <a class="navbar-brand" href="#">MovieBox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="#">Movies</a>
+                <a class="nav-link" href="#">TV Series</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="row mt-3">
+            <div class="col">
+                <h1>All Movies</h1>
+            </div>
+        </div>
+        <!-- <div id="app" class="container">
+          <button v-on:click="moviecall()" type="button" class="btn btn-primary">News</button>
+          <button v-on:click="seriecall()" type="button" class="btn btn-primary">Blog</button>
+          
+            <div id="mainpage" :class="style_firstpage">
+              <br>
+              <div class="row">
+                  <div class="col-md-4" v-for="isi_movie in movie">
+                      
+                    <div data-aos="fade-up">
+                      <b-card
+                        :title="isi_movie.Title"
+                        :img-src="isi_movie.Poster"
+                        img-alt="Image"
+                        img-top
+                        tag="article"
+                        style="max-width: 900px"
+                        class="mb-2"
+                        data-aos="fade-up"
+                      >
+                        <b-card-text>
+                          {{isi_movie.Year}}
+                        </b-card-text>
+      
+                        <div
+                          class="d-flex justify-content-between align-items-center mt-2"
+                        >
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-sm btn-outline-secondary"
+                              id="btnviewblog"
+                            >
+                              View
+                            </button>
+                            <button
+                              type="button"
+                              class="btn btn-sm btn-outline-secondary"
+                            >
+                              Edit
+                            </button>
+                          </div>
+                          <small class="text-muted">9 mins</small>
+                        </div>
+                      </b-card>
+                    </div>
+      
+                  </div>
+              </div>
+            </div>
+        </div> -->
+        
+        <!-- card -->
+      <div class="album py-5 bg-light">
+        <div id="app" class="container" style="border: 1px solid red;">
+          <button v-on:click="moviecall()" type="button" class="btn btn-primary">News</button>
+          <button v-on:click="seriecall()" type="button" class="btn btn-primary">Blog</button>
+          
+          <div id="mainpage" :class="style_firstpage">
+            <br>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <div class="col" v-for="isi_movie in movie">
+                <div data-aos="fade-up">
+                  <b-card
+                    :title="isi_movie.Title"
+                    :img-src="isi_movie.Poster"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    style="max-width: 900px"
+                    class="mb-2"
+                    data-aos="fade-up"
+                  >
+                    <b-card-text>
+                      {{isi_movie.Year}}
+                    </b-card-text>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-2"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          id="btnviewblog"
+                        >
+                          View
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </b-card>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="secondpage" :class="style_secondpage">
+            <br>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+              <div class="col" v-for="isi_serie in serie">
+                <div data-aos="fade-up">
+                  <b-card
+                    :title="isi_serie.Title"
+                    :img-src="isi_serie.Poster"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    class="mb-2"
+                  >
+                    <b-card-text> {{isi_serie.Year}} </b-card-text>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center mt-2"
+                    >
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                          id="btnviewberita"
+                          v-on:click="newspageid()"
+                        >
+                          View
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-sm btn-outline-secondary"
+                        >
+                          Edit
+                        </button>
+                      </div>
+                      <small class="text-muted">9 mins</small>
+                    </div>
+                  </b-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          movie: [],
+          serie: [],
+          style_firstpage: "show_firstpage",
+          style_secondpage: "none_secondpage",
+        },
+
+        methods: {
+          moviecall: function () {
+            this.style_firstpage = "show_firstpage";
+            this.style_secondpage = "none_secondpage";
+            axios
+              .get("http://localhost:8000/api/ambilmovie")
+              .then((response) => (this.movie = response.data));
+          },
+          seriecall: function () {
+            this.style_firstpage = "none_firstpage";
+            this.style_secondpage = "show_secondpage";
+
+            axios
+              .get("http://localhost:8000/api/ambiserie")
+              .then((response) => (this.serie = response.data));
+          },
+
+          upDate_movie: function () {
+            axios
+              .get("http://localhost:8000/api/ambilmovie")
+              .then((response) => (this.movie = response.data));
+          },
+
+          upDate_serie: function () {
+            axios
+              .get("http://localhost:8000/api/ambilserie")
+              .then((response) => (this.serie = response.data));
+          },
+        },
+
+        mounted() {
+          axios
+            .get("http://localhost:8000/api/ambilmovie")
+            .then((response) => (this.movie = response.data));
+
+          this.upDate_movie();
+          this.timer = setInterval(this.upDate_movie, 1000);
+
+          this.upDate_serie();
+          this.timer = setInterval(this.upDate_serie, 1000);
+        },
+      });
+      </script>
+</body>
+
+</html>
